@@ -22,7 +22,7 @@ function loadBooks() {
   // client.query('SELECT COUNT(*) FROM books')
   //   .then(result => {
   //     if(!parseInt(result.rows[0].count)) {
-  fs.readFile('./book-list-client/data/books.json', (err, fd) => {
+  fs.readFile('../book-list-client/data/books.json', (err, fd) => {
     JSON.parse(fd.toString()).forEach(ele => {
       client.query(`
             INSERT INTO
