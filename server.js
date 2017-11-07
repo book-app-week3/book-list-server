@@ -19,23 +19,23 @@ app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
 loadDB();
 
 function loadBooks() {
-  client.query('SELECT COUNT(*) FROM books')
-    .then(result => {
-      if(!parseInt(result.rows[0].count)) {
-        fs.readFile('../book-list-client/data/books.json', (err, fd) => {
-          JSON.parse(fd.toString()).forEach(ele => {
-            client.query(`
+  // client.query('SELECT COUNT(*) FROM books')
+  //   .then(result => {
+  //     if(!parseInt(result.rows[0].count)) {
+  fs.readFile('./book-list-client/data/books.json', (err, fd) => {
+    JSON.parse(fd.toString()).forEach(ele => {
+      client.query(`
             INSERT INTO
             books(author, title, isbn, image_url, description)
             VALUES $1, $2, $3, $4, $5;
           `,
-              [ele.author, ele.title, ele.isbn, ele.image_url, ele.description]
-            )
-              .catch(console.error);
-          })
-        })
-      }
+        [ele.author, ele.title, ele.isbn, ele.image_url, ele.description]
+      )
+        .catch(console.error);
     })
+  })
+//   }
+// })
 }
 
 function loadDB() {
