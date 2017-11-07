@@ -4,8 +4,9 @@ const pg = require('pg');
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-const PORT = process.env.PORT;
+
 const app = express();
+const PORT = process.env.PORT;
 const CLIENT_URL = process.env.CLIENT_URL;
 //const conString = `postgres://USER:4166@${PORT}`;
 // const conString = 'postgres://localhost:5432';
@@ -27,7 +28,7 @@ function loadBooks() {
       client.query(`
             INSERT INTO
             books(author, title, isbn, image_url, description)
-            VALUES $1, $2, $3, $4, $5;
+            VALUES ($1, $2, $3, $4, $5);
           `,
         [ele.author, ele.title, ele.isbn, ele.image_url, ele.description]
       )
