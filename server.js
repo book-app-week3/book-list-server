@@ -50,6 +50,6 @@ function loadDB() {
       description TEXT NOT NULL
     );`
   )
-    .then(loadBooks)
+    .then(loadBooks())
     .catch(console.error);
 }
