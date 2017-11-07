@@ -27,7 +27,7 @@ function loadBooks() {
             client.query(`
             INSERT INTO
             books(author, title, isbn, image_url, description)
-            SELECT $1, $2, $3, $4, $5;
+            VALUES $1, $2, $3, $4, $5;
           `,
               [ele.author, ele.title, ele.isbn, ele.image_url, ele.description]
             )
