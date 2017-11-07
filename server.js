@@ -8,8 +8,8 @@ const PORT = process.env.PORT;
 const app = express();
 const CLIENT_URL = process.env.CLIENT_URL;
 //const conString = `postgres://USER:4166@${PORT}`;
-const conString = 'postgres://localhost:5432';
-const client = new pg.Client(conString);
+// const conString = 'postgres://localhost:5432';
+const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 app.use(cors());
 app.get('/test', (request, response) => response.send('Hello Garrett'));
@@ -27,7 +27,7 @@ function loadBooks() {
             client.query(`
             INSERT INTO
             books(author, title, isbn, image_url, description)
-            SELECT $1, $2, $3, $4, $5
+            SELECT $1, $2, $3, $4, $5;
           `,
               [ele.author, ele.title, ele.isbn, ele.image_url, ele.description]
             )
