@@ -19,6 +19,7 @@ app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
 
 loadDB();
 
+
 function loadBooks() {
   // client.query('SELECT COUNT(*) FROM books')
   //   .then(result => {
