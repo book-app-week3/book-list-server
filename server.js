@@ -13,7 +13,11 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 app.use(cors());
-app.get('/test', (request, response) => response.send('Hello Garrett'));
+app.get('/api/v1/books', (request, response) => {
+  client.query(`SELECT book_id, title, author, image_url FROM books`)
+    .then(results => response.send(results.rows))
+    .catch(console.error)
+});
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
 
@@ -55,4 +59,3 @@ app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
 //     .then(loadBooks())
 //     .catch(console.error);
 // }
-
