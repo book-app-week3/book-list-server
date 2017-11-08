@@ -25,6 +25,7 @@ postgres, express, javascript, jQueery
 11-7-2017 9:00 am - Garrett and Jeff begin.
 11-7-2017 11:00 am - Files scaffolded.
 11-7-2017 1:00 pm  - Basic connections made.
+11-8-2017 1:00 pm - Books display to page (lab 1 complete).
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
