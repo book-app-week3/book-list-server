@@ -18,6 +18,9 @@ app.get('/api/v1/books', (request, response) => {
     .then(results => response.send(results.rows))
     .catch(console.error)
 });
+// app.post('/api/v1/books', bodyParser, (req, res) => {
+//  let {title, author, isbn, image_url, description} blah blah
+// })
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
 
