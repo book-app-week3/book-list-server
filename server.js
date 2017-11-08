@@ -17,6 +17,7 @@ app.get('/test', (request, response) => response.send('Hello Garrett'));
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
 
+
 // loadDB();
 //
 // function loadBooks() {
@@ -54,3 +55,4 @@ app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
 //     .then(loadBooks())
 //     .catch(console.error);
 // }
+
