@@ -25,11 +25,12 @@ app.get('/api/v1/books/:id', (request, response) => {
 });
 
 app.post('/books/new', bodyParser, (req, res) => {
+  console.log(req.body);
   let {title, author, isbn, image_url, description} = req.body;
   client.query(`
     INSERT INTO books (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5)`,
     [title, author, isbn, image_url, description])
-    .then(() => res.sendStatus(201))
+    .then(results => res.sendStatus(201))
     .catch(console.error);
 });
 
