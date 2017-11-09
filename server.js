@@ -24,7 +24,7 @@ app.get('/api/v1/books/:id', (request, response) => {
     .catch(console.error)
 });
 
-app.post('/books/new', bodyParser, (req, res) => {
+app.post('/api/v1/books', bodyParser, (req, res) => {
   console.log(req.body);
   let {title, author, isbn, image_url, description} = req.body;
   client.query(`
