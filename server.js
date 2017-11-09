@@ -18,6 +18,13 @@ app.get('/api/v1/books', (request, response) => {
     .then(results => response.send(results.rows))
     .catch(console.error)
 });
+
+app.get('/api/v1/books/:id', (request, response) => {
+  client.query(`SELECT * FROM books WHERE book_id=${request.params.id}`)
+    .then(results => response.send(results.rows))
+    .catch(console.error)
+});
+
 // app.post('/api/v1/books', bodyParser, (req, res) => {
 //  let {title, author, isbn, image_url, description} blah blah
 // })
