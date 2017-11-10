@@ -42,6 +42,7 @@ app.delete('/api/v1/books/:id', (request, response) => {
 });
 
 app.put('/api/v1/books/:id', (request, response) => {
+  console.log(request.body);
   client.query(`
     UPDATE books SET (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) WHERE book_id=$6`,
     [
