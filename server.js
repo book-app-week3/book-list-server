@@ -51,7 +51,7 @@ app.put('/api/v1/books/:id', bodyParser, (request, response) => {
       request.body.isbn,
       request.body.image_url,
       request.body.description,
-      request.params.id
+      request.body.book_id
     ]
   )
     .then(() => response.send(200))
