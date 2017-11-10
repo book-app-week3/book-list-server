@@ -33,6 +33,12 @@ app.post('/api/v1/books', bodyParser, (req, res) => {
     .then(results => res.sendStatus(201))
     .catch(console.error);
 });
-//
+
+app.delete('/api/v1/books/:id', (request, response) => {
+  client.query(`
+    DELETE FROM books WHERE book_id=${request.params.id}`)
+    .then(() => response.send(204))
+    .catch(console.error);
+});
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
