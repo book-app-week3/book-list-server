@@ -40,5 +40,22 @@ app.delete('/api/v1/books/:id', (request, response) => {
     .then(() => response.send(204))
     .catch(console.error);
 });
+
+app.put('/api/v1/books/:id', (request, response) => {
+  client.query(`
+    UPDATE books SET (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) WHERE book_id=$6`,
+    [
+      request.body.title,
+      request.body.author,
+      request.body.isbn,
+      request.body.image_url,
+      request.body.description,
+      request.params.id
+    ]
+  )
+    .then(() => response.send(200))
+    .catch(console.error);
+});
+
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
