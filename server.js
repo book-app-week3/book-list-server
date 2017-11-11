@@ -55,7 +55,8 @@ app.put('/api/v1/books', bodyParser, (req, res) => {
 });
 
 app.get('/api/v1/admin', (req, res) => {
-  console.log(TOKEN);
+  console.log('TOKEN type', typeof TOKEN);
+  console.log('parseInt token type', typeof parseInt(req.query.token));
   console.log(TOKEN === parseInt(req.query.token));
   res.send(TOKEN === parseInt(req.query.token));
 })
