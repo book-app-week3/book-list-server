@@ -55,8 +55,9 @@ app.put('/api/v1/books', bodyParser, (req, res) => {
 });
 
 app.get('/api/v1/admin', (req, res) => {
-  console.log(req.query.token);
-  res.send(TOKEN === parseInt(req.query.token))
+  console.log(TOKEN);
+  console.log(TOKEN === parseInt(req.query.token));
+  res.send(TOKEN === parseInt(req.query.token));
 })
 
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
