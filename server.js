@@ -42,22 +42,6 @@ app.delete('/api/v1/books/:id', (request, response) => {
     .catch(console.error);
 });
 
-// app.put('/api/v1/books/:id', bodyParser, (request, response) => {
-//   console.log(request.body);
-//   client.query(`
-//     UPDATE books SET (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) WHERE book_id=$6`,
-//     [
-//       request.body.title,
-//       request.body.author,
-//       request.body.isbn,
-//       request.body.image_url,
-//       request.body.description,
-//       request.body.book_id
-//     ]
-//   )
-//     .then(() => response.send(200))
-//     .catch(console.error);
-// });
 app.put('/api/v1/books', bodyParser, (req, res) => {
   let {title, author, isbn, image_url, description} = req.body;
   client.query(`
