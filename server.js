@@ -54,6 +54,10 @@ app.put('/api/v1/books', bodyParser, (req, res) => {
     .catch(console.error)
 });
 
-app.get('/api/v1/admin', (req, res) => res.send(TOKEN === parseInt(req.query.token)))
+app.get('/api/v1/admin', (req, res) => {
+  console.log(req.query.token);
+  res.send(TOKEN === parseInt(req.query.token))
+})
+
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
