@@ -4,6 +4,7 @@ const pg = require('pg');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser').urlencoded({extended: true});
+const TOKEN = process.env.TOKEN;
 // const fs = require('fs');
 
 const app = express();
@@ -69,5 +70,6 @@ app.put('/api/v1/books', bodyParser, (req, res) => {
     .catch(console.error)
 });
 
+app.get('/api/v1/admin', (req, res) => res.send(TOKEN === parseInt(req.query.token)))
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listenin on PORT : ${PORT}`));
